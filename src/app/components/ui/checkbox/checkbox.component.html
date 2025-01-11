@@ -1,8 +1,4 @@
-<label>
-  <input
-    type="checkbox"
-    [checked]="value"
-    (change)="onCheckboxChange($event)"
-  />
-  <ng-content></ng-content>
-</label>
+<input type="checkbox" [value]="value()" (input)="onInput($event)" [id]="id()" />
+    @if(label()) {
+        <label [htmlFor]="id()">{{ label() }}</label>
+        }

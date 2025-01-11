@@ -1,40 +1,44 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, input, signal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-checkbox',
+  standalone: true,
+  imports: [
+
+  ],
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
-  standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CheckboxComponent),
-      multi: true,
-    },
-  ],
+      multi: true
+    }
+  ]
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  value = false;
-  onChange = (value: boolean) => {};
-  onTouched = () => {};
+  label = input('');
+  value = signal(false);
+  id = input('');
+
+  onChange = (value: boolean) => { };
+  onTouched = () => { };
 
   writeValue(value: boolean): void {
-    this.value = value;
+    this.value.set(value);
   }
-
-  registerOnChange(fn: (value: boolean) => void): void {
+  registerOnChange(fn: any): void {
     this.onChange = fn;
   }
-
-  registerOnTouched(fn: () => void): void {
+  registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
-  onCheckboxChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.value = input.checked;
-    this.onChange(this.value);
-    this.onTouched();
+  onInput(event: Event) {
+    const el = event.target as HTMLInputElement;
+    const value = el.checked;
+    this.onChange(value);
+    this.value.set(value);
   }
 }

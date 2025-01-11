@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../../../services/task.service';
 import { CheckboxComponent } from '../../ui/checkbox/checkbox.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -13,7 +14,19 @@ import { CheckboxComponent } from '../../ui/checkbox/checkbox.component';
  
 })
 export class TaskListComponent {
-  tasks = this.taskService.getTasks();
+  tasks: any;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService,private router: Router) {}
+
+  ngOnInit() {
+    this.getTasks();
+  }
+
+  getTasks() {
+    this.tasks = this.taskService.getTasks();
+  }
+
+  goToDetail(taskId: any) {
+    this.router.navigate(['tasks', taskId]);
+  }
 }

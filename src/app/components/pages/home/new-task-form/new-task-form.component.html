@@ -1,16 +1,36 @@
 <div class="formwrapper">
   <h2 class="subheading">Create a new task</h2>
 
-  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <!-- <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="title">Task Title</label>
       <input id="title" formControlName="title"  class="inputText"/>
       <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
         Task title is required.
       </div>
+
+    </div>
+
+    <div class="checkbox-container">
+      <app-checkbox formControlName="agreeToTerms">Agree to Terms</app-checkbox>
+
     </div>
     <button type="submit" [disabled]="taskForm.invalid" class="btn-primary">Add Task</button>
+  </form> -->
+
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <app-input
+      [label]="'New Task'"
+      [id]="'new-task'"
+      [formControl]="taskForm.controls.title"/>
+      
+    <app-checkbox [label]="'Terms and conditions'" 
+    [formControl]="taskForm.controls.terms" /><br>
+    <!-- <input type="submit"> -->
+    <button type="submit" [disabled]="taskForm.invalid"  class="btn-primary">Show Tasks</button>
+  
   </form>
+
 </div>
 
 <router-outlet></router-outlet>

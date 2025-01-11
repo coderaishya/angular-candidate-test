@@ -11,6 +11,4 @@ export const routes: Routes = [
   { path: 'tasks/:taskId', component: TaskDetailsComponent },
 ];
 
-bootstrapApplication(TaskFormComponent, {
-  providers: [provideRouter(routes)],
-});
+
