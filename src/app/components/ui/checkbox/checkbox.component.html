@@ -1,1 +1,8 @@
-<p>checkbox works!</p>
+<label>
+  <input
+    type="checkbox"
+    [checked]="value"
+    (change)="onCheckboxChange($event)"
+  />
+  <ng-content></ng-content>
+</label>

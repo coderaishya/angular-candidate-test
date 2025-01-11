@@ -1,9 +1,18 @@
-<h2>Create a new task</h2>
-<form>
-  <app-input
-    [label]="'New Task'"
-    [id]="'new-task'"
-    [formControl]="form.controls.name"
-  />
-  <app-checkbox />
-</form>
+<div class="formwrapper">
+  <h2 class="subheading">Create a new task</h2>
+
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Task Title</label>
+      <input id="title" formControlName="title"  class="inputText"/>
+      <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
+        Task title is required.
+      </div>
+    </div>
+    <button type="submit" [disabled]="taskForm.invalid" class="btn-primary">Add Task</button>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
+
+

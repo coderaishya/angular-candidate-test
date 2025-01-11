@@ -1,11 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter/Inter_18pt-Regular.ttf');
+}
 * {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
+  font-family: "Inter", serif;
+  background:#A294F9
 }
 
 h1,
@@ -25,4 +31,71 @@ h1 {
 h2 {
   font-weight: 500;
   font-size: 2.25rem;
+}
+.formwrapper{
+  margin:auto auto;
+  padding: 100px 30px;
+  border:1px solid #DDD;
+  width:50%;
+  margin-top:150px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;}
+.heading{
+  font-size:32px;
+  color:#6A80B9
+}
+.subheading{
+  font-size:32px;
+  color:#6A80B9 ; 
+  padding:10px 0;
+  font-weight:bold;
+
+}
+.btn-primary{
+  background:#6A80B9;
+  color: #fff;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+.taskForm{
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-group {
+  margin:10px 0;
+  label{
+    margin-right:20px
+
+  }
+  .inputText{
+    width:50%;
+    height:30px;
+    padding:0 0 0 5px;
+    &:focus{
+      border:1px solid #ddd;
+      outline:none;
+    }
+  }
+}
+button {
+  padding: 5px 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
